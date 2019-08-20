@@ -12,11 +12,11 @@ INSTRUCTIONS:
 
 Inputs: 
   data: name of the data set as a .txt or .m file with 2 column vectors containing the x and y data for analysis
-  x1: x data as a column vector.
-  y1: y data as a column vector.
-  st: step size used in the analysis.
-  max_step: maximum desired step of interest to be analyzed.
-  points: number of data points in the x or y data sets. 
+  x1: x data as a column vector. Should be an N x 1 array of doubles/floats and the same length as 'y1'.
+  y1: y data as a column vector. Should also be an N x 1 array of doubles/floats and the same length as 'x1'. 
+  st: step size used in the analysis. Should be a non-negative integer scalar. 
+  max_step: maximum desired step of interest to be analyzed. Should be a non-negative integer scalar larger than 'st'. 
+  points: number of data points in the x or y data sets. Should be a non-negative integer equal to the length of 'x1' and 'y1'. 
   
 3) Run program after the input parameters are hard coded into the main script. The software will ask if anlysis with edge correction is wanted or not. 
 
