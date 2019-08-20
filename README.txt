@@ -1,4 +1,4 @@
-Univariate NDF Analysis for MATLAB
+Univariate Neighborhood Density Function (NDF) Analysis for MATLAB
 Written by Eric Manning
 Small Molecule Biophotonics Group
 University of Southern California
