@@ -1,12 +1,12 @@
 %%% Main Script
 
 % load data 
-data = 0;
+data;
 x1 = data(:,1);
 y1 = data(:,2);
 st = 10;
 max_step = 1000;
-points = 1000;
+points = length(x1);
 
 % choose method of edge correction
 method = ChooseEdgeCorrection();
@@ -20,4 +20,4 @@ end
 
 % display the NDF vector 
 disp('NDF vector:');
-disp(ndf);
+disp(ndf(:,1));
