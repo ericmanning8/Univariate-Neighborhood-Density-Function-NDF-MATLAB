@@ -17,8 +17,8 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
     ymax = max(y1); % maximum y value 
     area = (xmax - xmin) * (ymax - ymin); % region of interest ROI
     bins = max_step/st;
-    ndf = zeros(points); % preallocate ndf vector 
-    std_ndf = zeros(points); % preallocate std_ndf vector 
+    ndf = zeros(points,1); % preallocate ndf vector 
+    std_ndf = zeros(points,1); % preallocate std_ndf vector 
 
     for i = 1:points
         for j = (i+1):points
@@ -53,11 +53,11 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
                 if (method == 0)
                     inner_ew = 1;
                 elseif (method == 1)
-                    point_ew = edge_corr1(min(dx, dy), inner);
+                    inner_ew = edge_corr1(min(dx, dy), inner);
                 elseif (method == 2)
-                    point_ew = edge_corr2(dx, dy, dx2, dy2, inner);
+                    inner_ew = edge_corr2(dx, dy, dx2, dy2, inner);
                 elseif (method == 3)
-                    point_ew = edge_corr3(dx, dy, dx2, dy2, inner);
+                    inner_ew = edge_corr3(dx, dy, dx2, dy2, inner);
                 end
 
                 % Final correction is 1 + (effect of point - effect of circle) ...
@@ -90,18 +90,18 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
                 if (method == 0)
                     inner_ew = 1;
                 elseif (method == 1)
-                    point_ew = edge_corr1(min(dx, dy), inner);
+                    inner_ew = edge_corr1(min(dx, dy), inner);
                 elseif (method == 2)
-                    point_ew = edge_corr2(dx, dy, dx2, dy2, inner);
+                    inner_ew = edge_corr2(dx, dy, dx2, dy2, inner);
                 elseif (method == 3)
-                    point_ew = edge_corr3(dx, dy, dx2, dy2, inner);
+                    inner_ew = edge_corr3(dx, dy, dx2, dy2, inner);
                 end
 
                 % Final correction is 1 + (effect of point - effect of circle)
                 wji = 1 + (point_ew - inner_ew);
 
                 % Update the ndf list
-                bin_class = (Distance / st) + 1; % again +1 for indexing from one!
+                bin_class = ceil(Distance / st) + 1; % again +1 for indexing from one!
                 ndf(bin_class) = ndf(bin_class) + wij + wji; 
             end
         end
