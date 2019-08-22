@@ -3,6 +3,8 @@
 % From G and P 1999: Case 3
 function edge_corr3 = edge_corr3(d1, d2, d3, d4, d)
 
+    aout = 0; % aout initilized to 0 in the case where the logical statements are not ran 
+
     % logical statements for edge correction 3
     if (d > d1 && d > d2 && d > d3 && d <= d4)
         if ( (d^2) <= (d1^2 + d2^2) && (d^2) <= (d2^2 + d3^2) ) % Case 3a
@@ -13,8 +15,6 @@ function edge_corr3 = edge_corr3(d1, d2, d3, d4, d)
         elseif (d^2 > (d1^2 + d2^2) && d^2 > (d2^2 + d3^2)) % Case 3c
             aout = pi + acos(d1 / d) + acos(d3 / d);
         end
-    else
-        aout = 0; % aout initilized to 0 in the case where the logical statements are not ran 
     end
     
     % return edge correction 3
