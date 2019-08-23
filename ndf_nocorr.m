@@ -6,8 +6,8 @@ function [ndf, std_ndf] = ndf_nocorr(x1, y1, st, max_step, points)
     ymax = max(y1); % maximum y value 
     area = (xmax - xmin) * (ymax - ymin); % region of interest ROI
     bins = max_step/st;
-    ndf = zeros(points); % preallocate ndf vector 
-    std_ndf = zeros(points); % preallocate std_ndf vector 
+    ndf = zeros(bins,1); % preallocate ndf vector 
+    std_ndf = zeros(bins,1); % preallocate std_ndf vector 
 
     for i = 1:points
         for j = (i + 1):points
@@ -16,7 +16,7 @@ function [ndf, std_ndf] = ndf_nocorr(x1, y1, st, max_step, points)
 
             if (Distance <= max_step)
 
-                bin_class = ceil(Distance / st) + 1;  % Again +1 for indexing from one!
+                bin_class = ceil(Distance / st);
                 ndf(bin_class) = ndf(bin_class) + 2;  % + 2 because i to j = j to i
             end
         end
