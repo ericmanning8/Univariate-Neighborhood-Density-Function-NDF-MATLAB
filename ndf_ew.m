@@ -16,9 +16,9 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
     xmax = max(x1); % maximum x value
     ymax = max(y1); % maximum y value 
     area = (xmax - xmin) * (ymax - ymin); % region of interest ROI
-    bins = max_step/st;
-    ndf = zeros(points,1); % preallocate ndf vector 
-    std_ndf = zeros(points,1); % preallocate std_ndf vector 
+    bins = (max_step/st);
+    ndf = zeros(bins,1); % preallocate ndf vector 
+    std_ndf = zeros(bins,1); % preallocate std_ndf vector 
 
     for i = 1:points
         for j = (i+1):points
@@ -101,7 +101,7 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
                 wji = 1 + (point_ew - inner_ew);
 
                 % Update the ndf list
-                bin_class = ceil(Distance / st) + 1; % again +1 for indexing from one!
+                bin_class = ceil(Distance / st);
                 ndf(bin_class) = ndf(bin_class) + wij + wji; 
             end
         end
