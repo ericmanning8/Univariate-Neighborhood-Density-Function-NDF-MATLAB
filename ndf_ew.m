@@ -47,7 +47,7 @@ function [ndf, std_ndf] = ndf_ew(x1, y1, st, max_step, points)
                 end
 
                 % Now calculate the edge weighting effect for the inner circle (remember NDF is not cumulative) ....
-                inner = (Distance / st) * st;
+                inner = floor(Distance / st) * st;
                 method = assess_edge(inner, dx, dy, dx2, dy2);
 
                 if (method == 0)
